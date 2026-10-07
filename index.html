@@ -1,34 +1,140 @@
----
-layout: default
----
-<h1>{{ site.title }}</h1>
-<p class="sous-titre">{{ site.description }}</p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Benjamin · Portfolio BTS SIO</title>
+  <meta name="description" content="Portfolio de Benjamin, étudiant en BTS SIO option SISR.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<h2>Profil</h2>
-<p>Remplacez ce paragraphe par trois ou quatre phrases sur vous : ce que vous savez déjà faire, le métier que vous visez, et ce que vous cherchez (un stage, une alternance).</p>
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a class="logo" href="#accueil">Benjamin</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="menu" id="menu" aria-label="Navigation principale">
+        <a href="#projets">Projets</a>
+        <a href="#competences">Compétences</a>
+        <a href="#parcours">Parcours</a>
+        <a class="btn btn--small" href="#contact">Me contacter</a>
+      </nav>
+    </div>
+  </header>
 
-{% assign projets = site.projets | sort: "date" | reverse %}
+  <main id="accueil">
 
-<h2 id="projets">Projets ({{ projets.size }})</h2>
-{% for p in projets %}
-<article class="carte">
-  <h3><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
-  <p>{{ p.resume }}</p>
-  <p class="meta">{{ p.date | date: "%m/%Y" }} · {{ p.cadre }}</p>
-</article>
-{% endfor %}
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__text">
+        <p class="hero__kicker">Étudiant en BTS SIO · option SISR</p>
+        <h1>Je construis mes premières pages web, une étape à la fois.</h1>
+        <p class="hero__lead">Bienvenue sur mon portfolio. Tu y trouveras mes projets, mes compétences et mon parcours.</p>
+        <div class="hero__actions">
+          <a class="btn" href="#projets">Voir mes projets</a>
+          <a class="btn btn--light" href="#parcours">Mon parcours</a>
+        </div>
+      </div>
+      <div class="hero__card" aria-hidden="true">
+        <pre><code>mon-site
+  index.html
+  style.css
+  script.js
+  mon-image.svg</code></pre>
+        <p>Mon premier site, rangé dans un seul dossier.</p>
+      </div>
+    </section>
 
-<h2 id="competences">Compétences du bloc 1</h2>
-<p>Chaque croix renvoie au projet qui la prouve. Le tableau se remplit tout seul à chaque projet ajouté.</p>
-<div class="defile">
-<table>
-  <thead>
-    <tr><th scope="col">Compétence</th>{% for p in projets %}<th scope="col"><a href="{{ p.url | relative_url }}">P{{ forloop.rindex }}</a></th>{% endfor %}</tr>
-  </thead>
-  <tbody>
-  {% for c in site.data.competences %}
-    <tr><th scope="row">{{ c.libelle }}</th>{% for p in projets %}<td class="case">{% if p.competences contains c.code %}<a href="{{ p.url | relative_url }}" aria-label="{{ c.libelle }} : {{ p.title }}">X</a>{% endif %}</td>{% endfor %}</tr>
-  {% endfor %}
-  </tbody>
-</table>
-</div>
+    <!-- PROJETS -->
+    <section class="section" id="projets">
+      <div class="section__head">
+        <h2>Mes projets</h2>
+        <div class="arrows">
+          <button class="arrow" id="prev" aria-label="Projet précédent">‹</button>
+          <button class="arrow" id="next" aria-label="Projet suivant">›</button>
+        </div>
+      </div>
+
+      <ul class="track" id="track">
+        <li class="card">
+          <div class="card__visual card__visual--blue">HTML · CSS · JS</div>
+          <h3>Mon premier site</h3>
+          <p>Une page avec une liste, un lien, une image, un formulaire, un bouton et un compteur de clics qui change de message au bout de 5 clics.</p>
+          <a class="card__link" href="#">Voir le code sur GitHub</a>
+        </li>
+        <li class="card">
+          <div class="card__visual card__visual--dark">Projet 2</div>
+          <h3>Titre du projet</h3>
+          <p>Décris ici ton deuxième projet : son but, les outils utilisés et ce que tu as appris.</p>
+          <a class="card__link" href="#">Voir le projet</a>
+        </li>
+        <li class="card">
+          <div class="card__visual card__visual--gray">Projet 3</div>
+          <h3>Titre du projet</h3>
+          <p>Décris ici ton troisième projet, par exemple un TP réseau ou une installation de serveur.</p>
+          <a class="card__link" href="#">Voir le projet</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- COMPÉTENCES -->
+    <section class="section section--gray" id="competences">
+      <h2>Mes compétences</h2>
+      <div class="tabs" role="tablist" aria-label="Catégories de compétences">
+        <button class="tab is-active" role="tab" aria-selected="true" data-tab="web">Web</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="reseaux">Systèmes et réseaux</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="outils">Outils</button>
+      </div>
+
+      <div class="panel is-active" id="panel-web" role="tabpanel">
+        <ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Console du navigateur (F12)</li></ul>
+      </div>
+      <div class="panel" id="panel-reseaux" role="tabpanel">
+        <ul class="chips"><li>À compléter</li><li>Windows</li><li>Linux</li><li>Réseaux</li></ul>
+      </div>
+      <div class="panel" id="panel-outils" role="tabpanel">
+        <ul class="chips"><li>VS Code</li><li>GitHub</li><li>Explorateur de fichiers</li></ul>
+      </div>
+    </section>
+
+    <!-- PARCOURS -->
+    <section class="section" id="parcours">
+      <h2>Mon parcours</h2>
+      <ol class="timeline">
+        <li>
+          <h3>BTS SIO option SISR · 1re année</h3>
+          <p>En alternance, à ENSITECH, école supérieure d'informatique.</p>
+        </li>
+        <li>
+          <h3>Bac technologique SIO</h3>
+          <p>Mes premières bases en informatique de gestion.</p>
+        </li>
+        <li>
+          <h3>Expériences professionnelles</h3>
+          <p>Vente en magasin, caisse, archivage de documents et restauration rapide : de l'équipe, du rythme et du contact client.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <h2>Travaillons ensemble</h2>
+      <p>Une question, une offre d'alternance ou de stage ? Écris-moi.</p>
+      <div class="hero__actions hero__actions--center">
+        <a class="btn btn--white" href="mailto:ton.email@exemple.fr">benjaminlema09@gmail.com</a>
+        <a class="btn btn--outline" href="#">Mon GitHub</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year">2026</span> Benjamin · Portfolio réalisé en HTML, CSS et JavaScript</p>
+    <a href="#accueil">Retour en haut</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
