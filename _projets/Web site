@@ -1,0 +1,107 @@
+---
+title: "Intitulé du projet"
+date: 2026-10-07
+cadre: "Atelier de professionnalisation"
+resume: "Dans le cadre d'un exercice de mon cu"
+competences: [c2]
+---
+
+## Contexte
+
+Dans le cadre de mon cursus scolaire, j'ai crée mon site internet
+
+## Conditions et moyens
+
+Seul à l'aide de mon pc portable, j'ai crée mon site avec comme base le logiciel VS Code
+
+## Description de l'activité
+
+# Mon premier site : HTML, CSS et JavaScript
+
+Cet atelier fait partie de ma première année de BTS SIO. Le but : construire une vraie page web de A à Z, avec un titre, une liste, un lien, une image, un formulaire, un bouton et un compteur de clics. Au bout de 5 clics, le message change tout seul, et c'est plutôt satisfaisant à voir.
+
+**Qui fait quoi ?**
+- **HTML** : ce qu'il y a sur la page
+- **CSS** : à quoi elle ressemble
+- **JavaScript** : ce qu'elle fait quand on interagit avec
+
+---
+
+## Avant de se lancer : l'éditeur
+
+Il faut d'abord un éditeur, le logiciel où l'on tape son code. Deux options : **VS Code**, qui est recommandé, ou le simple **Bloc-notes**.
+
+
+---
+
+## Partie 1 : le contenu (HTML)
+
+### Étape 1 : le dossier
+Je crée un dossier `mon-site` dans Documents, tout en minuscules, sans espace ni accent. Tout le site vivra là-dedans.
+
+### Étape 2 : `index.html`
+C'est la porte d'entrée : le navigateur lit ce fichier en premier. J'y pose la structure de base d'une page, plus un gros titre.
+
+### Étape 3 : un paragraphe et une liste
+Ensuite viennent un paragraphe, un sous-titre et une petite liste de mes trois passions : le sport, la musique et les jeux vidéo.
+
+### Étape 4 : un lien et une image
+Je glisse un lien vers Wikipedia, puis l'image `mon-image.svg`. Attention : elle doit se trouver dans le même dossier que `index.html`. Sinon, le navigateur affiche une petite icône cassée à la place.
+
+### Étape 5 : un formulaire
+Un texte « Ton prénom : » suivi d'une case où on peut écrire. Rien de compliqué, mais ça fait déjà plus « vrai site ».
+
+---
+
+## Partie 2 : l'apparence (CSS)
+
+### Étape 6 : `style.css`
+Je crée le fichier de style et je le relie à la page avec une balise `<link>` dans le `<head>`. Dès l'actualisation, tout change : fond beige, police Arial, texte centré.
+
+### Étape 7 : couleurs, tailles et cadres
+Je règle chaque élément un par un. Le titre passe en bleu, l'image rétrécit et reçoit un cadre, et le formulaire se retrouve dans une boîte grise.
+
+### Étape 8 : les classes
+Une classe sert à styliser un seul élément sans toucher aux autres. J'ai donné la classe `important` au premier paragraphe, qui devient rouge et en gras.
+
+---
+
+## Partie 3 : le comportement (JavaScript)
+
+### Étape 9 : `script.js`
+Je crée le fichier et je le relie juste avant la fin du `<body>`. Pour vérifier que ça fonctionne, j'envoie un message avec `console.log`. Visuellement rien ne bouge, mais ce message apparaît dans la console (F12).
+
+### Étape 10 : un bouton qui réagit
+J'ajoute un bouton « Clique-moi » et un paragraphe de message. Le script retrouve chaque élément grâce à son `id`, puis attend le clic. Quand il arrive, le texte devient « Bravo, tu as cliqué ! ».
+
+### Étape 11 : le compteur
+C'est là que j'ai compris à quoi sert une variable : une sorte de boîte avec une étiquette, qui garde une valeur en mémoire. `nombre` démarre à 0, gagne 1 à chaque clic, et s'affiche sur la page.
+
+### Étape 12 : la condition `if`
+Le `if` permet de réagir seulement dans certains cas. Ici, dès que le compteur atteint 5, le message devient « Déjà 5 clics ! ».
+
+> Bien écrire `>=` et non `=>`, et garder le `if` à l'intérieur de la fonction.
+
+### Étape 13 : faire exprès de se tromper
+Dernière étape, un peu surprenante : je change volontairement une lettre dans le script (`"bouton"` devient `"boutton"`). Le bouton ne répond plus, et la console affiche une erreur en rouge avec le mot `null` et le numéro de la ligne fautive. Je remets le bon mot et tout rentre dans l'ordre.
+
+---
+
+## Résultat
+
+Le dossier `mon-site` contient quatre fichiers :
+
+| Fichier | Rôle |
+|---|---|
+| `index.html` | la page |
+| `style.css` | l'apparence |
+| `script.js` | le comportement |
+| `mon-image.svg` | le dessin |
+
+## Ce que j'en retiens
+
+Une erreur n'a rien de dramatique : la console explique ce qui cloche et à quel endroit, et apprendre à la lire est probablement le plus utile de tout l'atelier. Le reste tient en une méthode : ajouter un petit morceau, enregistrer, actualiser, vérifier.
+
+## Productions et preuves
+
+![Ce que montre la capture]({{ "/images/exemple.png" | relative_url }}
