@@ -9,18 +9,37 @@
 </head>
 <body>
 
-  <header class="header" id="header">
+  <!-- Interrupteurs invisibles : ils remplacent le JavaScript (menu mobile et thème) -->
+  <input type="checkbox" id="menu-toggle" class="sr" aria-label="Ouvrir ou fermer le menu">
+  <input type="checkbox" id="theme-toggle" class="sr" aria-label="Passer en thème sombre">
+
+  <div class="progress" aria-hidden="true"></div>
+
+  <!-- Bandeau défilant -->
+  <div class="promo" aria-label="Disponibilité">
+    <div class="promo__track">
+      <span>Étudiant en BTS SIO option SISR</span><span>Recherche d'alternance et de stage</span><span>Portfolio en construction</span>
+      <span>Étudiant en BTS SIO option SISR</span><span>Recherche d'alternance et de stage</span><span>Portfolio en construction</span>
+    </div>
+  </div>
+
+  <header class="header">
     <div class="header__inner">
       <a class="logo" href="#accueil">Benjamin</a>
-      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="menu" id="menu" aria-label="Navigation principale">
+      <nav class="menu" aria-label="Navigation principale">
         <a href="#projets">Projets</a>
         <a href="#competences">Compétences</a>
         <a href="#parcours">Parcours</a>
         <a class="btn btn--small" href="#contact">Me contacter</a>
       </nav>
+      <div class="header__tools">
+        <label class="icon-btn" for="theme-toggle" title="Thème clair ou sombre">
+          <span class="icon-btn__moon">☾</span><span class="icon-btn__sun">☀</span>
+        </label>
+        <label class="burger" for="menu-toggle" title="Menu">
+          <span></span><span></span><span></span>
+        </label>
+      </div>
     </div>
   </header>
 
@@ -28,113 +47,153 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="hero__text">
-        <p class="hero__kicker">Étudiant en BTS SIO · option SISR</p>
-        <h1>Je construis mes premières pages web, une étape à la fois.</h1>
-        <p class="hero__lead">Bienvenue sur mon portfolio. Tu y trouveras mes projets, mes compétences et mon parcours.</p>
-        <div class="hero__actions">
+      <div class="orb orb--1" aria-hidden="true"></div>
+      <div class="orb orb--2" aria-hidden="true"></div>
+      <div class="orb orb--3" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <p class="kicker reveal">Benjamin · BTS SIO option SISR</p>
+        <h1 class="reveal">Je transforme des idées en
+          <span class="rotator"><span>pages web</span><span aria-hidden="true">projets concrets</span><span aria-hidden="true">réseaux fiables</span></span>
+        </h1>
+        <p class="lead reveal">Bienvenue sur mon portfolio. Découvre mes projets, mes compétences et mon parcours.</p>
+        <div class="actions reveal">
           <a class="btn" href="#projets">Voir mes projets</a>
-          <a class="btn btn--light" href="#parcours">Mon parcours</a>
+          <a class="btn btn--ghost" href="#parcours">Mon parcours</a>
         </div>
-      </div>
-      <div class="hero__card" aria-hidden="true">
-        <pre><code>mon-site
-  index.html
-  style.css
-  script.js
-  mon-image.svg</code></pre>
-        <p>Mon premier site, rangé dans un seul dossier.</p>
+
+        <ul class="stats reveal">
+          <li><strong style="--n:13"></strong><span>étapes réalisées</span></li>
+          <li><strong style="--n:3"></strong><span>langages utilisés</span></li>
+          <li><strong style="--n:4"></strong><span>fichiers dans mon 1er site</span></li>
+        </ul>
       </div>
     </section>
 
-    <!-- PROJETS -->
+    <!-- Bande technologies -->
+    <div class="ribbon" aria-hidden="true">
+      <div class="ribbon__track">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>VS Code</span><span>GitHub</span><span>Windows</span><span>Linux</span><span>Réseaux</span>
+        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>VS Code</span><span>GitHub</span><span>Windows</span><span>Linux</span><span>Réseaux</span>
+      </div>
+    </div>
+
+    <!-- PROJETS : les filtres sont des boutons radio cachés + des étiquettes -->
     <section class="section" id="projets">
-      <div class="section__head">
+      <input type="radio" name="filtre" id="f-all" class="sr" checked>
+      <input type="radio" name="filtre" id="f-web" class="sr">
+      <input type="radio" name="filtre" id="f-reseaux" class="sr">
+
+      <div class="section__head reveal">
         <h2>Mes projets</h2>
-        <div class="arrows">
-          <button class="arrow" id="prev" aria-label="Projet précédent">‹</button>
-          <button class="arrow" id="next" aria-label="Projet suivant">›</button>
+        <div class="filters">
+          <label class="chip" for="f-all">Tous</label>
+          <label class="chip" for="f-web">Web</label>
+          <label class="chip" for="f-reseaux">Réseaux</label>
         </div>
       </div>
 
-      <ul class="track" id="track">
-        <li class="card">
-          <div class="card__visual card__visual--blue">HTML · CSS · JS</div>
+      <div class="bento">
+        <article class="card card--wide card--blue reveal" data-cat="web">
+          <span class="badge">Nouveau</span>
           <h3>Mon premier site</h3>
-          <p>Une page avec une liste, un lien, une image, un formulaire, un bouton et un compteur de clics qui change de message au bout de 5 clics.</p>
-          <a class="card__link" href="#">Voir le code sur GitHub</a>
-        </li>
-        <li class="card">
-          <div class="card__visual card__visual--dark">Projet 2</div>
-          <h3>Titre du projet</h3>
-          <p>Décris ici ton deuxième projet : son but, les outils utilisés et ce que tu as appris.</p>
-          <a class="card__link" href="#">Voir le projet</a>
-        </li>
-        <li class="card">
-          <div class="card__visual card__visual--gray">Projet 3</div>
-          <h3>Titre du projet</h3>
-          <p>Décris ici ton troisième projet, par exemple un TP réseau ou une installation de serveur.</p>
-          <a class="card__link" href="#">Voir le projet</a>
-        </li>
-      </ul>
+          <p>Une page avec une liste, un lien, une image, un formulaire, un bouton et un compteur de clics. Au bout de 5 clics, le message change tout seul.</p>
+          <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+          <a class="more" href="#">Voir le code sur GitHub</a>
+        </article>
+
+        <article class="card card--dark reveal" data-cat="reseaux">
+          <h3>Projet réseau</h3>
+          <p>Décris ici un TP réseau ou une installation de serveur : le but, les outils, ce que tu as appris.</p>
+          <ul class="tags"><li>À compléter</li></ul>
+          <a class="more" href="#">Voir le projet</a>
+        </article>
+
+        <article class="card card--light reveal" data-cat="web">
+          <h3>Projet web n°2</h3>
+          <p>Décris ici ton prochain projet web. Pense à ajouter une capture d'écran.</p>
+          <ul class="tags"><li>À compléter</li></ul>
+          <a class="more" href="#">Voir le projet</a>
+        </article>
+      </div>
     </section>
 
-    <!-- COMPÉTENCES -->
-    <section class="section section--gray" id="competences">
-      <h2>Mes compétences</h2>
-      <div class="tabs" role="tablist" aria-label="Catégories de compétences">
-        <button class="tab is-active" role="tab" aria-selected="true" data-tab="web">Web</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="reseaux">Systèmes et réseaux</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="outils">Outils</button>
+    <!-- COMPÉTENCES : onglets en boutons radio cachés -->
+    <section class="section section--surface" id="competences">
+      <input type="radio" name="onglet" id="t-web" class="sr" checked>
+      <input type="radio" name="onglet" id="t-reseaux" class="sr">
+      <input type="radio" name="onglet" id="t-outils" class="sr">
+
+      <h2 class="reveal">Mes compétences</h2>
+      <div class="tabs reveal">
+        <label class="tab" for="t-web">Web</label>
+        <label class="tab" for="t-reseaux">Systèmes et réseaux</label>
+        <label class="tab" for="t-outils">Outils</label>
       </div>
 
-      <div class="panel is-active" id="panel-web" role="tabpanel">
-        <ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Console du navigateur (F12)</li></ul>
+      <div class="panel" id="panel-web">
+        <div class="skills">
+          <div class="skill"><h3>HTML</h3><p>Structurer une page : titres, listes, liens, images, formulaires.</p></div>
+          <div class="skill"><h3>CSS</h3><p>Colorer, redimensionner, encadrer, utiliser des classes.</p></div>
+          <div class="skill"><h3>JavaScript</h3><p>Réagir à un clic, compter, décider avec un if, lire une erreur.</p></div>
+        </div>
       </div>
-      <div class="panel" id="panel-reseaux" role="tabpanel">
-        <ul class="chips"><li>À compléter</li><li>Windows</li><li>Linux</li><li>Réseaux</li></ul>
+      <div class="panel" id="panel-reseaux">
+        <div class="skills">
+          <div class="skill"><h3>Windows</h3><p>À compléter avec ce que tu as vu en cours.</p></div>
+          <div class="skill"><h3>Linux</h3><p>À compléter avec ce que tu as vu en cours.</p></div>
+          <div class="skill"><h3>Réseaux</h3><p>À compléter avec ce que tu as vu en cours.</p></div>
+        </div>
       </div>
-      <div class="panel" id="panel-outils" role="tabpanel">
-        <ul class="chips"><li>VS Code</li><li>GitHub</li><li>Explorateur de fichiers</li></ul>
+      <div class="panel" id="panel-outils">
+        <div class="skills">
+          <div class="skill"><h3>VS Code</h3><p>Mon éditeur pour écrire le code.</p></div>
+          <div class="skill"><h3>Navigateur (F12)</h3><p>La console pour comprendre les erreurs.</p></div>
+          <div class="skill"><h3>GitHub</h3><p>Pour ranger et présenter mes projets.</p></div>
+        </div>
       </div>
     </section>
 
     <!-- PARCOURS -->
     <section class="section" id="parcours">
-      <h2>Mon parcours</h2>
+      <h2 class="reveal">Mon parcours</h2>
       <ol class="timeline">
-        <li>
+        <li class="reveal">
+          <span class="timeline__tag">En cours</span>
           <h3>BTS SIO option SISR · 1re année</h3>
-          <p>En alternance, à ENSITECH, école supérieure d'informatique.</p>
+          <p>En alternance, à IRIS, école supérieure d'informatique.</p>
         </li>
-        <li>
+        <li class="reveal">
+          <span class="timeline__tag">Avant</span>
           <h3>Bac technologique SIO</h3>
           <p>Mes premières bases en informatique de gestion.</p>
         </li>
-        <li>
-          <h3>Expériences professionnelles</h3>
-          <p>Vente en magasin, caisse, archivage de documents et restauration rapide : de l'équipe, du rythme et du contact client.</p>
+        <li class="reveal">
+          <span class="timeline__tag">Expériences</span>
+          <h3>Vente, caisse, archivage, restauration rapide</h3>
+          <p>De l'équipe, du rythme et du contact avec les clients.</p>
         </li>
       </ol>
     </section>
 
     <!-- CONTACT -->
     <section class="contact" id="contact">
-      <h2>Travaillons ensemble</h2>
-      <p>Une question, une offre d'alternance ou de stage ? Écris-moi.</p>
-      <div class="hero__actions hero__actions--center">
-        <a class="btn btn--white" href="mailto:ton.email@exemple.fr">benjaminlema09@gmail.com</a>
-        <a class="btn btn--outline" href="#">Mon GitHub</a>
+      <div class="contact__inner reveal">
+        <h2>Travaillons ensemble</h2>
+        <p>Une question, une offre d'alternance ou de stage ? Écris-moi.</p>
+        <div class="actions actions--center">
+          <a class="btn btn--white" href="mailto:ton.email@exemple.fr">ton.email@exemple.fr</a>
+          <a class="btn btn--outline" href="#">Mon GitHub</a>
+        </div>
       </div>
     </section>
 
   </main>
 
   <footer class="footer">
-    <p>© <span id="year">2026</span> Benjamin · Portfolio réalisé en HTML, CSS et JavaScript</p>
-    <a href="#accueil">Retour en haut</a>
+    <p>© 2026 Benjamin · Fait en HTML et CSS, sans JavaScript</p>
+    <a href="#accueil">Retour en haut ↑</a>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
